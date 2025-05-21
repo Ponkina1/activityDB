@@ -7,12 +7,24 @@ import {
     limit,
     startAt,
     endAt,
-    getDocs
+    getDocs,
+    addDoc
 } from 'firebase/firestore';
 
 export class FirestoreQuery {
     constructor(collectionName) {
         this.collectionRef = collection(db, collectionName);
+    }
+
+    async insert(data) {
+        try {
+            const docRef = await addDoc(this.collectionRef, data);
+            console.log("Document written with ID: ", docRef.id);
+            return docRef.id;
+        } catch (error) {
+            console.error("Error adding document: ", error);
+            throw error;
+        }
     }
 
     async whereQuery(column, comparison, value) {

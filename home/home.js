@@ -14,7 +14,7 @@ function loadUserData() {
             document.getElementById("lastName").value = data.lastName || "";
             document.getElementById("username").value = data.username || "";
             document.getElementById("email").value = data.email || "";
-            document.getElementById("address").value = data.Address || data.address || "";
+            document.getElementById("address").value = data.address || data.address || "";
         })
         .catch(error => {
             console.error("Error loading user data:", error);
